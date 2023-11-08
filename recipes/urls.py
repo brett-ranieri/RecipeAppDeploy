@@ -1,6 +1,8 @@
 from django.urls import path
 from .views import RecipeListView, RecipeDetailView, records, create_view
 
+from django.conf import settings
+from django.conf.urls.static import static
 # import home view
 from .views import home, about_view
 
@@ -15,4 +17,4 @@ urlpatterns = [
     path("search/", records, name="search"),
     path("create/", create_view, name="create"),
     path("about/", about_view, name="about"),
-]
+] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
